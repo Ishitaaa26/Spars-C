@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct sparse_matrix 
+{
+    int row;
+    int column;
+    int value;
+};
+
+void print_sparse_matrix(struct sparse_matrix *matrix, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        printf("(%d, %d, %d)\n", matrix[i].row, matrix[i].column, matrix[i].value);
+    }
+}
+
+int main() 
+{
+    int n = 3;
+    struct sparse_matrix *matrix = malloc(n * sizeof(struct sparse_matrix)); 
+    matrix[0].row = 0;
+    matrix[0].column = 1;
+    matrix[0].value = 10;
+
+    matrix[1].row = 1;
+    matrix[1].column = 2;
+    matrix[1].value = 20;
+
+    matrix[2].row = 2;
+    matrix[2].column = 0;
+    matrix[2].value = 30;
+
+    print_sparse_matrix(matrix, n);
+
+    free(matrix);
+
+    return 0;
+}
